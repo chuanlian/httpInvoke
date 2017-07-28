@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+
+	<bean id="searchUpdateDataExporter"
+		  class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+		<property name="serviceUrl"
+				  value="http://newpollux.baidu.com:80/pollux/search/searchUpdateDataExporter" />
+		<property name="serviceInterface" value="com.baidu.rigel.newpollux.client.exporter.SearchUpdateDataExporter" />
+		<property name="httpInvokerRequestExecutor" ref="httpInvokerRequestExecutor" />
+	</bean>
+
+
+	<bean id="httpInvokerRequestExecutor"
+		  class="org.springframework.remoting.httpinvoker.CommonsHttpInvokerRequestExecutor">
+		<property name="httpClient">
+			<bean class="org.apache.commons.httpclient.HttpClient">
+				<property name="connectionTimeout" value="30000"/>
+				<property name="timeout" value="60000"/>
+				<property name="httpConnectionManager">
+					<ref bean="multiThreadedHttpConnectionManager"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="multiThreadedHttpConnectionManager"
+		  class="org.apache.commons.httpclient.MultiThreadedHttpConnectionManager">
+		<property name="params">
+			<bean class="org.apache.commons.httpclient.params.HttpConnectionManagerParams">
+				<property name="maxTotalConnections" value="600"/>
+				<property name="defaultMaxConnectionsPerHost" value="512"/>
+			</bean>
+		</property>
+	</bean>
+	<bean id="hintSourceTagExporter"
+		class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+		<property name="serviceUrl"
+			value="http://10.99.59.11:8360/ipangu-datacenter/datacenter/hint/hintSourceTagExporter" />
+		<property name="serviceInterface"
+			value="com.baidu.rigel.ipangu.center.hint.client.exporter.HintSourceTagExporter" />
+	</bean>
+	<bean id="hintExporter"
+		class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+		<property name="serviceUrl"
+			value="http://10.99.59.11:8360/ipangu-datacenter/datacenter/hint/hintExporter" />
+		<property name="serviceInterface"
+			value="com.baidu.rigel.ipangu.center.hint.client.exporter.HintExporter" />
+	</bean>
+
+
+	<bean id="personHintExporter"
+		class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+		<property name="serviceUrl"
+			value="http://10.26.203.62:8360/ipangu-datacenter/datacenter/personhint/PersonHintExporter" />
+		<property name="serviceInterface"
+			value="com.baidu.rigel.ipangu.center.personhint.client.exporter.PersonHintExporter" />
+	</bean>
+
+
+
+
+</beans>
