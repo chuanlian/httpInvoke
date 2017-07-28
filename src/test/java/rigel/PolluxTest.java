@@ -23,7 +23,7 @@ public class PolluxTest {
     public void testSendPollux() {
         try {
             ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
-            SearchUpdateDataExporter exporter = (SearchUpdateDataExporter) context.getBean("searchUpdateDataExporterBean");
+            SearchUpdateDataExporter exporter = (SearchUpdateDataExporter) context.getBean("searchUpdateDataExporter");
             SearchUpdateDataVO searchUpdateDataVO = new SearchUpdateDataVO();
 
             searchUpdateDataVO.setPosId(20170622L);
