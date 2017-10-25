@@ -3,11 +3,14 @@ package rigel.list;
 import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        System.out.println(JSON.toJSON(Collections.emptyList()));
 
         TestVo testVo = new TestVo();
         testVo.setId(11);
