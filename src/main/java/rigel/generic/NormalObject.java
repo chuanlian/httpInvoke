@@ -16,4 +16,23 @@ public class NormalObject implements Serializable {
     //    public static <T> Pair<T> getMin(Pair<T> T) {
     //        return null;
     //    }
+
+
+    public static <T extends Throwable> void doWork(T t) {
+        try {
+
+        } catch (Exception ex) {
+
+        }
+    }
+
+    public static void printLn(Pair<? extends Comparable> pair) {
+
+
+    }
+
+    public static void printLn2(Pair<? super String> pair) {
+
+
+    }
 }
