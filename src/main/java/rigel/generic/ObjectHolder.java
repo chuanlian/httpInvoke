@@ -1,6 +1,8 @@
 package rigel.generic;
 
-public class ObjectHolder<T> {
+import java.io.Serializable;
+
+public class ObjectHolder<T extends Comparable & Serializable> {
     private T obj;
 
     public T getObj() {
