@@ -6,12 +6,12 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class IDGenerator {
+public class IDGenerator2 {
 
     /**
      * log for this class
      */
-    private static Logger logger = Logger.getLogger(IDGenerator.class);
+    private static Logger logger = Logger.getLogger(IDGenerator2.class);
     private static AtomicInteger currIndex = new AtomicInteger(0);
 
     /**
@@ -70,11 +70,11 @@ public class IDGenerator {
     }
 
     public static void setInstanceID(String instanceID) {
-        IDGenerator.instanceID = instanceID;
-        int tempID = IDGenerator.intInstanceID;
+        IDGenerator2.instanceID = instanceID;
+        int tempID = IDGenerator2.intInstanceID;
         try {
             tempID = Integer.parseInt(instanceID);
-            IDGenerator.intInstanceID = tempID;
+            IDGenerator2.intInstanceID = tempID;
         } catch (Exception e) {
             logger.error("instance id be seted as " + instanceID, e);
         }
@@ -82,8 +82,8 @@ public class IDGenerator {
     }
 
     public static void main(String args[]) {
-        System.out.println(IDGenerator.intInstanceID);
-        System.out.println(IDGenerator.generateBigIntStringKey());
+        System.out.println(IDGenerator2.intInstanceID);
+        System.out.println(IDGenerator2.generateBigIntStringKey());
 
 
         for (int k = 1; k < 100; k++) {
