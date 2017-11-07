@@ -1,33 +1,18 @@
 package rigel.genId;
 
-import org.apache.log4j.Logger;
-
-import java.util.Random;
-import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class IDGenerator2 {
 
-    /**
-     * log for this class
-     */
-    private static Logger logger = Logger.getLogger(IDGenerator2.class);
+
     private static AtomicInteger currIndex = new AtomicInteger(0);
 
     /**
-     * 初始化一个实例id
-     * 系统的不重复实例id由db指定，需要依赖datacenter中的common包
-     * 否则，就有千分之一的概率重复
+     * 实例id
      */
-    private static String instanceID = "";
-    private static int intInstanceID = 0;
+    private static int intInstanceID = 1;
+    private static long START_ID = 3000000000000L;
 
-    static {
-        intInstanceID = new Random().nextInt(1000);
-        instanceID = ("000" + String.valueOf(intInstanceID));
-        instanceID = instanceID.substring(instanceID.length() - 3, instanceID.length());
-        logger.info("instance id is inited with random value " + instanceID);
-    }
 
     /**
      * 19位ID，前面13位是毫秒，后6位取纳秒9-15位，保证下毫秒的比上毫秒的大
@@ -37,58 +22,27 @@ public class IDGenerator2 {
      */
     public static String generateBigIntStringKey() {
         int tempIndex = currIndex.incrementAndGet() % 1000;
-        long id = System.currentTimeMillis();
-        id = (id * 1000 + intInstanceID) * 1000 + tempIndex;
-        return String.valueOf(id);
+        long timeStamp = System.currentTimeMillis();
+        long uniqueId = ((START_ID + timeStamp) * 1000 + getInstanceID()) * 1000 + tempIndex;
+        return String.valueOf(uniqueId);
     }
 
-    /**
-     * 以bigint为字段类型的主键生成器
-     * 返回的key组成： <br>
-     * <ol>
-     * <li>12位 "yyMMddHHmmss"为格式的时间字符串</li>
-     * <li>1位随机数字(0~9)</li>
-     * <li>6位纳秒后缀字符串</li>
-     * </ol>
-     *
-     * @return 主键id
-     */
-    public static Long generateBigIntKey() {
-        return Long.valueOf(generateBigIntStringKey());
-    }
-
-    /**
-     * @return
-     */
-    public static String generateUUID() {
-        return UUID.randomUUID().toString().replace("-", "");
-    }
-
-
-    public static String getInstanceID() {
-        return instanceID;
-    }
-
-    public static void setInstanceID(String instanceID) {
-        IDGenerator2.instanceID = instanceID;
-        int tempID = IDGenerator2.intInstanceID;
-        try {
-            tempID = Integer.parseInt(instanceID);
-            IDGenerator2.intInstanceID = tempID;
-        } catch (Exception e) {
-            logger.error("instance id be seted as " + instanceID, e);
-        }
-        logger.info("instance id be seted as " + instanceID);
-    }
 
     public static void main(String args[]) {
+        System.out.println(System.currentTimeMillis() + "," + (System.currentTimeMillis() + "").length());
         System.out.println(IDGenerator2.intInstanceID);
         System.out.println(IDGenerator2.generateBigIntStringKey());
-
-
-        for (int k = 1; k < 100; k++) {
-            System.out.println(System.currentTimeMillis());
+        for (int k = 0; k < 100; k++) {
+            System.out.println(IDGenerator2.generateBigIntStringKey());
         }
     }
 
+    /**
+     * 分配分片ID:最多支持100个集群
+     *
+     * @return
+     */
+    public static int getInstanceID() {
+        return intInstanceID;
+    }
 }
