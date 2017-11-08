@@ -13,7 +13,6 @@ public class Main {
                 new Class[]{Subject.class},
                 new ProxyHandler(real));
         proxySubject.doSomething();
-
         createProxyClassFile();
     }
 

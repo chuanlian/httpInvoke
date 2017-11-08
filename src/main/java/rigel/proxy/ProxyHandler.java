@@ -12,6 +12,7 @@ public class ProxyHandler implements InvocationHandler {
     }
 
     public Object invoke(Object o, Method method, Object[] args) throws Throwable {
+        System.out.println("safads");
         return method.invoke(proxied, args);
     }
 }
