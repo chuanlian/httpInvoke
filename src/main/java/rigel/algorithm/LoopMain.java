@@ -6,7 +6,7 @@ import org.apache.commons.lang.StringUtils;
 /**
  * 实现回文判断
  */
-public class Main1 {
+public class LoopMain {
 
     /**
      * @param args
