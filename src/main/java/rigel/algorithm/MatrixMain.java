@@ -6,6 +6,7 @@ package rigel.algorithm;
 public class MatrixMain {
 
     public static void main(String[] args) {
+
         int[][] num = new int[100][100];
         int n = 6;
         int count = 1;
@@ -22,11 +23,11 @@ public class MatrixMain {
             }
         }
 
-        outPut(num, 0, n - 1);
-        //  System.out.println(JSON.toJSON(num));
+        output(num, 0, n - 1);
+
     }
 
-    private static void outPut(int[][] num, int start, int end) {
+    private static void output(int[][] num, int start, int end) {
 
         if (start > end || end <= 0) return;
         for (int i = start; i <= end; i++) {
@@ -43,6 +44,6 @@ public class MatrixMain {
             System.out.println(num[i][start]);
         }
 
-        outPut(num, start + 1, end - 1);
+        output(num, start + 1, end - 1);
     }
 }
