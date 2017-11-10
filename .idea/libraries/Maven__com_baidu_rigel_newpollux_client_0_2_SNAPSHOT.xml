@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.baidu.rigel:newpollux-client:0.2-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../java/warehouses/com/baidu/rigel/newpollux-client/0.2-SNAPSHOT/newpollux-client-0.2-20170909.122138-95.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../java/warehouses/com/baidu/rigel/newpollux-client/0.2-SNAPSHOT/newpollux-client-0.2-20170909.122138-95-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../java/warehouses/com/baidu/rigel/newpollux-client/0.2-SNAPSHOT/newpollux-client-0.2-20170909.122138-95-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

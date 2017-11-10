@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.baidu.rigel:ipangu-datacenter-hint:0.1.2-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../java/warehouses/com/baidu/rigel/ipangu-datacenter-hint/0.1.2-SNAPSHOT/ipangu-datacenter-hint-0.1.2-20170420.084636-2654.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../java/warehouses/com/baidu/rigel/ipangu-datacenter-hint/0.1.2-SNAPSHOT/ipangu-datacenter-hint-0.1.2-20170420.084636-2654-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../java/warehouses/com/baidu/rigel/ipangu-datacenter-hint/0.1.2-SNAPSHOT/ipangu-datacenter-hint-0.1.2-20170420.084636-2654-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
